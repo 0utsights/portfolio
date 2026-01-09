@@ -1,4 +1,6 @@
-## This is my personal portfolio website, built from scratch using plain **HTML, CSS, and JavaScript**.
+# johnsurles.com — Personal Portfolio
+
+This is my personal portfolio website, built from scratch using plain **HTML, CSS, and JavaScript**.
 
 The site is fully static and hosted on **GitHub Pages**.
 
