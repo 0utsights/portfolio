@@ -65,11 +65,9 @@ function frame(now) {
   if (camQ < 0) camQ += P;
   if (camR < 0) camR += P;
 
-  // screen-sized window (+margin)
   const Q = Math.floor(W / (SQ * s)) + 3;
   const R = Math.floor(H / (1.5 * s)) + 3;
 
-  // clear
   ctx.clearRect(0, 0, W, H);
   ctx.fillStyle = "#000";
   ctx.fillRect(0, 0, W, H);
