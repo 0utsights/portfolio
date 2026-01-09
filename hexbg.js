@@ -6,10 +6,10 @@ const ctx = canvas.getContext("2d");
 const SQ = Math.sqrt(3);
 
 // config
-let s = 15;                 // hex "size" (outer radius)
-const P = 40;               // repeat period in hexes (bigger = less obvious loop)
-let vx = 25;                // pixels/sec
-let vy = 10;                // pixels/sec
+let s = 15;        // hex "size" (outer radius)
+const P = 40;      // repeat period in hexes
+let vx = 25;       // pixels/sec
+let vy = 10;       // pixels/sec
 
 // camera in fractional axial coords
 let camQ = 0.0;
@@ -21,12 +21,12 @@ function resize() {
   canvas.height = Math.floor(window.innerHeight * dpr);
   canvas.style.width = window.innerWidth + "px";
   canvas.style.height = window.innerHeight + "px";
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // draw in CSS pixels
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 window.addEventListener("resize", resize);
 resize();
 
-// axial -> pixel (pointy-top)
+// axial -> pixel
 function a2p(q, r) {
   return {
     x: SQ * s * (q + r / 2),
@@ -34,11 +34,11 @@ function a2p(q, r) {
   };
 }
 
-// draw a single hex outline at (cx, cy)
+// draw a single hex outline
 function drawHex(cx, cy) {
   ctx.beginPath();
   for (let i = 0; i < 6; i++) {
-    const a = (Math.PI / 180) * (60 * i - 30); // pointy-top
+    const a = (Math.PI / 180) * (60 * i - 30);
     const x = cx + s * Math.cos(a);
     const y = cy + s * Math.sin(a);
     if (i === 0) ctx.moveTo(x, y);
@@ -50,7 +50,7 @@ function drawHex(cx, cy) {
 
 let last = performance.now();
 function frame(now) {
-  const dt = Math.min(0.05, (now - last) / 1000); // seconds, clamp
+  const dt = Math.min(0.05, (now - last) / 1000);
   last = now;
 
   const W = window.innerWidth;
